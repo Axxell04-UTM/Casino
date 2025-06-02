@@ -7,6 +7,24 @@
 <ion-content [fullscreen]="true">
   <app-nav type="game" />
   <div class="debts-container">
-    <span>No tiene deudas pendientes</span>
+    <span *ngIf="!debts.length" >
+      No tiene deudas pendientes
+    </span>
+    <ion-card class="debt-card" *ngFor="let debt of debts; index as i" (click)="payDebt(i)">
+      <div class="debt-row-card">
+        <span>
+          {{ debt }}
+        </span>
+        <ion-icon name="cash" />
+      </div>
+      <ion-button fill="outline" color="danger" [disabled]="debt > money">
+        Pagar
+      </ion-button>
+    </ion-card>
+  </div>
+  <div class="row-container">
+    <span *ngIf="resultMessage" [ngStyle]="{'color': colorMessage}">
+      {{ resultMessage }}
+    </span>
   </div>
 </ion-content>

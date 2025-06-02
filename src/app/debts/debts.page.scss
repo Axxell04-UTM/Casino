@@ -4,6 +4,39 @@ ion-title {
 
 .debts-container {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     align-items: center;
+    justify-content: center;
+}
+
+.row-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.debt-card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    padding: 7px;
+    .debt-row-card {
+        display: flex;
+        flex-direction: row;
+        gap: 5px;
+        align-items: center;
+
+        span {
+            color: aliceblue;
+            font-size: 18px;
+        }
+        ion-icon {
+            color: greenyellow;
+            font-size: 22px;
+        }
+    }
+    
 }

@@ -43,15 +43,16 @@ export class PlayerService {
         if (!pj) { return null };
         
         const debt = pj.debts[index];
+        console.log(debt);
 
         if (!debt) { return null };
 
         if (debt > pj.money) { return false } ;
 
-        this.updateMoney("lost", debt);
         pj = {
             ...pj,
-            debts: pj.debts.filter(debt => pj?.debts.indexOf(debt) !== index)
+            debts: pj.debts.filter((_, i) => i !== index),
+            money: pj.money - debt
         }
         this.setPlayer(pj);
         this.storage.set(pj.name, JSON.stringify(pj));
