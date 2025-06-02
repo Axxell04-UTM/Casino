@@ -1,0 +1,24 @@
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+    padding: 10px;
+    gap: 20px;
+}
+
+.form-sub-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+ion-title {
+    text-align: center;
+}
+
+.alert-message {
+    color: indianred;
+    padding: 10px;
+}

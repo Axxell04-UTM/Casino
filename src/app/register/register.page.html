@@ -1,0 +1,55 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>REGISTRO DE USUARIO</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form class="form-container" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-sub-container">
+      <ion-input label="Nombre de usuario"
+      labelPlacement="floating"
+      placeholder="Ingrese su nombre de usuario"
+      fill="outline" 
+      formControlName="name"
+      ></ion-input>
+    </div>
+    <div class="form-sub-container">
+      <ion-input label="Contraseña" 
+      labelPlacement="floating" 
+      placeholder="Ingrese su contraseña" 
+      fill="outline" 
+      type="password"
+      formControlName="password"
+      ></ion-input>
+    </div>
+    <div class="form-sub-container">
+      <ion-input label="Contraseña" 
+      labelPlacement="floating" 
+      placeholder="Ingrese su contraseña" 
+      fill="outline" 
+      type="password"
+      formControlName="confirmPassword"
+      ></ion-input>
+    </div>
+    <div class="form-sub-container">
+      <ion-button type="submit">
+        Registrar
+      </ion-button>
+      <ion-button fill="clear" [routerLink]="['/login']">
+        Iniciar sesión
+      </ion-button>
+    </div>
+    <div class="form-sub-container">
+      <span class="alert-message" *ngIf="form.errors?.['notSame']">
+        Las contraseñas no coinciden
+      </span>
+      <span class="alert-message">
+        {{ alertMessage }}
+      </span>
+      <span class="success-message">
+        {{ successMessage }}
+      </span>
+    </div>
+  </form>
+</ion-content>
