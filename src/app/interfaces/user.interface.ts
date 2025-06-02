@@ -3,4 +3,5 @@ export interface User {
     password: string
     logged: boolean
     money: number
+    debts: number[]
 }

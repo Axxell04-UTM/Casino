@@ -12,12 +12,18 @@
     </div>
   </div>
 
-  <div style="display: flex; flex-direction: column; align-items: center;">
+  <div class="row-container" *ngIf="resultMessage">
     <ion-button (click)="resetGame()">
       Volver a jugar
     </ion-button>
-    <span class="result-message" [ngStyle]="{'color': colorMessage}">
-      {{ resultMessage }}
+  </div>
+
+  <div class="row-container">
+    <span *ngIf="resultMessage" class="result-message" [ngStyle]="{'color': colorMessage}">
+      <span>
+        {{ resultMessage }}
+      </span>
+      <ion-icon name="cash" [ngStyle]="{'color': colorMessage}" />
     </span>
   </div>
 </ion-content>

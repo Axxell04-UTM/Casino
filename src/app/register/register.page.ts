@@ -63,7 +63,8 @@ export class RegisterPage implements OnInit {
       name: this.form.value!.name,
       password: this.form.value!.password,
       logged: false,
-      money: 200
+      money: 200,
+      debts: []
     };
     this.authService.register(user);
     this.form.reset();

@@ -11,7 +11,7 @@ import {
 } from '@ionic/angular/standalone';
 import { NavComponent } from '../components/nav/nav.component';
 import { addIcons } from 'ionicons';
-import { diamond, map } from 'ionicons/icons';
+import { diamond, journal, map, wallet } from 'ionicons/icons';
 
 @Component({
   selector: 'app-home',
@@ -31,6 +31,6 @@ import { diamond, map } from 'ionicons/icons';
 })
 export class HomePage {
   constructor() {
-    addIcons({ diamond, map });
+    addIcons({ diamond, map, journal, wallet });
   }
 }

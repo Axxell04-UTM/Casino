@@ -12,14 +12,17 @@
     >
     </app-card>
   </div>
-  <div style="display: flex; flex-direction: column; align-items: center;">
+  <div *ngIf="resultMessage" class="row-container" >
     <ion-button (click)="refreshWI()">
       Volver a jugar
     </ion-button>
   </div>
-  <div class="row-container">
+  <div *ngIf="resultMessage" class="row-container">
     <span class="result-message" [ngStyle]="{'color': colorMessage}">
-      {{ resultMessage }}
+      <span>
+        {{ resultMessage }}
+      </span>
+      <ion-icon name="cash" [ngStyle]="{'color': colorMessage}" />
     </span>
   </div>
 </ion-content>

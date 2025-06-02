@@ -28,4 +28,12 @@ export const routes: Routes = [
     path: 'guess-the-way',
     loadComponent: () => import('./guess-the-way/guess-the-way.page').then( m => m.GuessTheWayPage)
   },
+  {
+    path: 'debts',
+    loadComponent: () => import('./debts/debts.page').then( m => m.DebtsPage)
+  },
+  {
+    path: 'loans',
+    loadComponent: () => import('./loans/loans.page').then( m => m.LoansPage)
+  },
 ];

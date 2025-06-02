@@ -34,4 +34,42 @@ export class PlayerService {
         return this._player.value;
     }
 
+    getDebts() {
+        return this._player.value?.debts;
+    }
+
+    payDebt(index: number) {
+        let pj = this._player.value;
+        if (!pj) { return null };
+        
+        const debt = pj.debts[index];
+
+        if (!debt) { return null };
+
+        if (debt > pj.money) { return false } ;
+
+        this.updateMoney("lost", debt);
+        pj = {
+            ...pj,
+            debts: pj.debts.filter(debt => pj?.debts.indexOf(debt) !== index)
+        }
+        this.setPlayer(pj);
+        this.storage.set(pj.name, JSON.stringify(pj));
+        return true;
+    }
+
+    makeLoan(value: number) {
+        let pj = this._player.value;
+        if (!pj) { return null };
+
+        pj = {
+            ...pj,
+            debts: [...pj.debts, value],
+            money: pj.money + value
+        }
+        this.setPlayer(pj);
+        this.storage.set(pj.name, JSON.stringify(pj));
+        return true;
+    }
+
 }

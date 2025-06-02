@@ -7,9 +7,10 @@ import {
   IonTitle,
   IonToolbar,
   IonButton,
+  IonIcon
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import { diamond } from 'ionicons/icons';
+import { cash, diamond } from 'ionicons/icons';
 import { CardComponent } from '../components/card/card.component';
 import { RouterLink } from '@angular/router';
 import { NavComponent } from "../components/nav/nav.component";
@@ -29,12 +30,13 @@ import { PlayerService } from '../services/player.service';
     CommonModule,
     FormsModule,
     CardComponent,
-    NavComponent
+    NavComponent,
+    IonIcon
 ],
 })
 export class FindTheDiamondPage implements OnInit {
   constructor(private playerService: PlayerService) {
-    addIcons({ });
+    addIcons({ cash });
 
     for (let index = 0; index < this.numCards; index++) {
       this.cards.push({ status: undefined });
@@ -56,8 +58,11 @@ export class FindTheDiamondPage implements OnInit {
   numCards = 10;
 
   winningIndex: number | undefined;
+  earningValue = 100;
+  lostValue = 10;
 
   resultMessage = "";
+
   colorMessage = ""
 
   revealed: boolean | undefined;
@@ -69,15 +74,16 @@ export class FindTheDiamondPage implements OnInit {
   }
 
   onPressCard(event: number) {
+    if (this.resultMessage) { return };
     this.revealCards();
     if (event === this.winningIndex) {
-      this.resultMessage = "Has ganado";
+      this.resultMessage = "Has ganado " + this.earningValue;
       this.colorMessage = "rgb(107, 255, 62)"
-      this.playerService.updateMoney("earning", 100);
+      this.playerService.updateMoney("earning", this.earningValue);
     } else {
-      this.resultMessage = "Has perdido";
+      this.resultMessage = "Has perdido " + this.lostValue;
       this.colorMessage = "rgb(247, 97, 97)"
-      this.playerService.updateMoney("lost", 10);
+      this.playerService.updateMoney("lost", this.lostValue);
     }
 
   }

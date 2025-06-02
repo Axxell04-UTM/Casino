@@ -1,0 +1,43 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>PRESTAMOS</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <app-nav type="game" />
+  <form class="form-container" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-sub-container">
+      <ion-input label="Valor del prestamo"
+        labelPlacement="floating"
+        placeholder="Ingrese el valor $$"
+        fill="outline"
+        type="number"
+        formControlName="amount"
+        max="5000"
+        min="10"
+        step="10"
+      ></ion-input>
+    </div>
+    <div class="form-sub-container" >
+      <ion-button type="submit">
+        Hacer prestamo
+      </ion-button>
+    </div>
+    <div class="form-sub-container">
+      <span class="alert-message" *ngIf="form.get('amount')?.errors?.['notMultipleOfTen']">
+        El monto deber ser múltiplo de 10
+      </span>
+      <span class="alert-message" *ngIf="form.get('amount')?.errors?.['max']">
+        El monto máximo es de 5000
+      </span>
+      <span class="alert-message">
+        {{ alertMessage }}
+      </span>
+      <span class="success-message">
+        {{ successMessage }}
+      </span>
+    </div>
+  </form>
+</ion-content>
+

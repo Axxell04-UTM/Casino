@@ -7,10 +7,13 @@ import {
   IonTitle,
   IonToolbar,
   IonButton,
+  IonIcon
 } from '@ionic/angular/standalone';
 import { CrystalComponent } from '../components/crystal/crystal.component';
 import { NavComponent } from '../components/nav/nav.component';
 import { PlayerService } from '../services/player.service';
+import { addIcons } from 'ionicons';
+import { cash } from 'ionicons/icons';
 
 @Component({
   selector: 'app-guess-the-way',
@@ -27,10 +30,13 @@ import { PlayerService } from '../services/player.service';
     FormsModule,
     CrystalComponent,
     NavComponent,
+    IonIcon
   ],
 })
 export class GuessTheWayPage implements OnInit {
-  constructor(private playerService: PlayerService) {}
+  constructor(private playerService: PlayerService) {
+    addIcons({cash});
+  }
 
   getRandomInt(min: number, max: number): number {
     min = Math.ceil(min);
@@ -40,8 +46,10 @@ export class GuessTheWayPage implements OnInit {
 
   initState = true;
 
-  resultMessage: 'Has ganado' | 'Has perdido' | '' = '';
+  resultMessage = '';
   colorMessage: 'rgb(107, 255, 62)' | 'rgb(247, 97, 97)' | '' = "";
+  earningValue = 1000;
+  lostValue = 10;
 
   crystals = [
     {
@@ -97,6 +105,7 @@ export class GuessTheWayPage implements OnInit {
   }
 
   onCrushedCrystal(event: { rowId: number; index: number; gameover: boolean }) {
+    if (this.resultMessage) { return };
     this.initState = false;
     let row = this.crystals.find((row) => row.rowId === event.rowId);
     if (row) {
@@ -104,7 +113,7 @@ export class GuessTheWayPage implements OnInit {
       row.pressable = false;
     }
     if (event.gameover) {
-      this.resultMessage = 'Has perdido';
+      this.resultMessage = 'Has perdido ' + this.lostValue;
       this.colorMessage = "rgb(247, 97, 97)";
       this.playerService.updateMoney("lost", 10);
     } else if (row) {
@@ -114,7 +123,7 @@ export class GuessTheWayPage implements OnInit {
           newRow.pressable = true;
         }
       } else {
-        this.resultMessage = 'Has ganado';
+        this.resultMessage = 'Has ganado ' + this.earningValue;
         this.colorMessage = "rgb(107, 255, 62)";
         this.playerService.updateMoney("earning", 1000);
       }
