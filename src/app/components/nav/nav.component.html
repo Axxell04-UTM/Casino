@@ -1,0 +1,22 @@
+<div class="nav">
+    <ion-button *ngIf='type === "home"' fill="clear" (click)="logout()">
+      Salir
+    </ion-button>
+    <ion-button *ngIf='type === "game"' fill="clear" [routerLink]="['/']">
+      Regresar
+    </ion-button>
+    <div class="info-container">
+      <div class="info">
+        <ion-icon name="person-circle" class="user"></ion-icon>
+        <span>
+          {{ playerName }}
+        </span>
+      </div>
+      <div class="info">
+        <ion-icon name="cash" class="money"></ion-icon>
+        <span>
+          {{ playerMoney }}
+        </span>
+      </div>
+    </div>
+  </div>

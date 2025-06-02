@@ -1,0 +1,10 @@
+<ion-card
+(click)="pressCard(index ?? 0)"
+>
+  <ion-card-title [ngSwitch]="status">
+    
+    <ion-icon *ngSwitchCase="undefined" name="help" size="large" color="primary"></ion-icon>
+    <ion-icon *ngSwitchCase="true" name="diamond" size="large" color="primary"></ion-icon>
+    <ion-icon *ngSwitchCase="false" name="close" size="large" color="primary"></ion-icon>
+  </ion-card-title>
+</ion-card>

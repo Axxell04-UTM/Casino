@@ -1,0 +1,23 @@
+ion-title {
+    text-align: center;
+}
+
+.crystals-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: fit-content;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    height: fit-content;
+    gap: 10px;
+}
+
+.result-message {
+    margin-top: 20px;
+}

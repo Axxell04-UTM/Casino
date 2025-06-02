@@ -1,0 +1,25 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>ENCUENTRA EL DIAMANTE</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <app-nav type="game" />
+  <div class="cards-container">
+    <app-card *ngFor="let card of cards; index as i" [index]="i" [winningIndex]="winningIndex" [revealed]="revealed"
+    (cardClicked)="onPressCard($event)"
+    >
+    </app-card>
+  </div>
+  <div style="display: flex; flex-direction: column; align-items: center;">
+    <ion-button (click)="refreshWI()">
+      Volver a jugar
+    </ion-button>
+  </div>
+  <div class="row-container">
+    <span class="result-message" [ngStyle]="{'color': colorMessage}">
+      {{ resultMessage }}
+    </span>
+  </div>
+</ion-content>

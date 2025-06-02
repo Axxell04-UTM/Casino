@@ -1,20 +1,27 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      INICIO
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <app-nav type="home" />
+  <div class="cards-container">
+    <div class="row-container">
+      <ion-card class="card" [routerLink]="['/find-the-diamond']">
+        <ion-icon name="diamond"></ion-icon>
+        <ion-card-title>
+          Encuentra el diamante
+        </ion-card-title>
+      </ion-card>
+      <ion-card class="card" [routerLink]="['/guess-the-way']">
+        <ion-icon name="map"></ion-icon>
+        <ion-card-title>
+          Adivina el camino
+        </ion-card-title>
+      </ion-card>
+    </div>
   </div>
 </ion-content>

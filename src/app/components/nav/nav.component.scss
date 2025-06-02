@@ -1,0 +1,35 @@
+.nav {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    margin-bottom: 30px;
+    align-items: center;
+}
+
+.info-container {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    flex-grow: 1;
+    justify-content: end;
+    padding-inline: 20px;
+}
+
+.info {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+}
+
+ion-icon {
+    font-size: 20px;
+}
+
+.user {
+    color: aquamarine;
+}
+
+.money {
+    color: greenyellow;
+}

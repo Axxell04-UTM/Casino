@@ -1,0 +1,23 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>ADIVINA EL CAMINO</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <app-nav type="game" />
+  <div class="crystals-container">
+    <div class="row" *ngFor="let row of crystals">
+      <app-crystal *ngFor="let crystal of row.values; index as i" [index]="i" [rowId]="row.rowId" [tempered]="!!crystal" [initState]="initState" (crushedCrystal)="onCrushedCrystal($event)" [pressable]="row.pressable" />
+    </div>
+  </div>
+
+  <div style="display: flex; flex-direction: column; align-items: center;">
+    <ion-button (click)="resetGame()">
+      Volver a jugar
+    </ion-button>
+    <span class="result-message" [ngStyle]="{'color': colorMessage}">
+      {{ resultMessage }}
+    </span>
+  </div>
+</ion-content>

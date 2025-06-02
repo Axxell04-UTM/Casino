@@ -20,4 +20,12 @@ export const routes: Routes = [
     path: 'register',
     loadComponent: () => import('./register/register.page').then( m => m.RegisterPage)
   },
+  {
+    path: 'find-the-diamond',
+    loadComponent: () => import('./find-the-diamond/find-the-diamond.page').then( m => m.FindTheDiamondPage)
+  },
+  {
+    path: 'guess-the-way',
+    loadComponent: () => import('./guess-the-way/guess-the-way.page').then( m => m.GuessTheWayPage)
+  },
 ];
