@@ -10,14 +10,14 @@
     <span *ngIf="!debts.length" >
       No tiene deudas pendientes
     </span>
-    <ion-card class="debt-card" *ngFor="let debt of debts; index as i" (click)="payDebt(i)">
+    <ion-card class="debt-card" *ngFor="let debt of debts; index as i">
       <div class="debt-row-card">
         <span>
           {{ debt }}
         </span>
         <ion-icon name="cash" />
       </div>
-      <ion-button fill="outline" color="danger" [disabled]="debt > money">
+      <ion-button fill="outline" color="danger" [disabled]="debt > money" (click)="payDebt(i)">
         Pagar
       </ion-button>
     </ion-card>
