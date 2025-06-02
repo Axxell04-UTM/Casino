@@ -12,7 +12,7 @@
     </div>
   </div>
 
-  <div class="row-container" *ngIf="resultMessage">
+  <div class="row-container" *ngIf="resultMessage && resultMessage !== 'Necesita más dinero para seguir jugando'">
     <ion-button (click)="resetGame()">
       Volver a jugar
     </ion-button>

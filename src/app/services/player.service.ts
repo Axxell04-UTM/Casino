@@ -16,6 +16,10 @@ export class PlayerService {
         this._player.next(player);
     }
 
+    getMoney() {
+        return this._player.value?.money;
+    }
+
     updateMoney(type: "earning" | "lost", value: number) {
         let pj = this._player.value;
         if (!pj) { return }

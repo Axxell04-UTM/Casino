@@ -35,7 +35,13 @@ import { PlayerService } from '../services/player.service';
 ],
 })
 export class FindTheDiamondPage implements OnInit {
+  money: number = 0;
+
   constructor(private playerService: PlayerService) {
+    this.playerService.player$.subscribe(pj => {
+      this.money = pj?.money ?? 0;
+    })
+
     addIcons({ cash });
 
     for (let index = 0; index < this.numCards; index++) {
@@ -75,6 +81,12 @@ export class FindTheDiamondPage implements OnInit {
 
   onPressCard(event: number) {
     if (this.resultMessage) { return };
+    if (!this.money) {
+      this.resultMessage = "Necesita más dinero para seguir jugando";
+      this.colorMessage = "rgb(247, 97, 97)";
+      return;
+    }
+
     this.revealCards();
     if (event === this.winningIndex) {
       this.resultMessage = "Has ganado " + this.earningValue;

@@ -34,7 +34,13 @@ import { cash } from 'ionicons/icons';
   ],
 })
 export class GuessTheWayPage implements OnInit {
+  money: number = 0;
+
   constructor(private playerService: PlayerService) {
+    this.playerService.player$.subscribe(pj => {
+      this.money = pj?.money ?? 0;
+    })
+
     addIcons({cash});
   }
 
@@ -106,6 +112,11 @@ export class GuessTheWayPage implements OnInit {
 
   onCrushedCrystal(event: { rowId: number; index: number; gameover: boolean }) {
     if (this.resultMessage) { return };
+    if (!this.money) {
+      this.resultMessage = "Necesita más dinero para seguir jugando";
+      this.colorMessage = "rgb(247, 97, 97)";
+      return;
+    }
     this.initState = false;
     let row = this.crystals.find((row) => row.rowId === event.rowId);
     if (row) {

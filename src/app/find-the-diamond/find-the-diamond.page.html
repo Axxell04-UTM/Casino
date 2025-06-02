@@ -12,7 +12,7 @@
     >
     </app-card>
   </div>
-  <div *ngIf="resultMessage" class="row-container" >
+  <div *ngIf="resultMessage && resultMessage !== 'Necesita más dinero para seguir jugando'" class="row-container" >
     <ion-button (click)="refreshWI()">
       Volver a jugar
     </ion-button>
