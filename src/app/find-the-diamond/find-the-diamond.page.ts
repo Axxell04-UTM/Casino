@@ -15,6 +15,7 @@ import { CardComponent } from '../components/card/card.component';
 import { RouterLink } from '@angular/router';
 import { NavComponent } from "../components/nav/nav.component";
 import { PlayerService } from '../services/player.service';
+import { SettingsService } from '../services/settings.service';
 
 @Component({
   selector: 'app-find-the-diamond',
@@ -37,9 +38,31 @@ import { PlayerService } from '../services/player.service';
 export class FindTheDiamondPage implements OnInit {
   money: number = 0;
 
-  constructor(private playerService: PlayerService) {
+  numCards: 5 | 10 | 20 = 10;
+
+  winningIndex: number | undefined;
+  earningValue: 100 | 500 | 3000 = 500;
+  lostValue: 10 | 50 = 10;
+
+  constructor(private playerService: PlayerService, private settings: SettingsService) {
     this.playerService.player$.subscribe(pj => {
       this.money = pj?.money ?? 0;
+    });
+
+    this.settings.difficulty$.subscribe(level => {
+      if (level === 1) {
+        this.numCards = 5;
+        this.earningValue = 100;
+        this.lostValue = 10;
+      } else if (level === 3) {
+        this.numCards = 20;
+        this.earningValue = 3000;
+        this.lostValue = 50;
+      } else {
+        this.numCards = 10;
+        this.earningValue = 500;
+        this.lostValue = 10;
+      }
     })
 
     addIcons({ cash });
@@ -61,11 +84,7 @@ export class FindTheDiamondPage implements OnInit {
     this.resultMessage = "";
   }
 
-  numCards = 10;
-
-  winningIndex: number | undefined;
-  earningValue = 500;
-  lostValue = 10;
+  
 
   resultMessage = "";
 

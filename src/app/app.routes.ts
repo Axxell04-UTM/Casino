@@ -45,4 +45,9 @@ export const routes: Routes = [
     loadComponent: () => import('./ranking/ranking.page').then( m => m.RankingPage),
     canActivate: [AuthGuard]
   },
+  {
+    path: 'settings',
+    loadComponent: () => import('./settings/settings.page').then( m => m.SettingsPage),
+    canActivate: [AuthGuard]
+  },
 ];

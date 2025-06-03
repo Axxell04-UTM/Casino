@@ -1,0 +1,24 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>AJUSTES</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <app-nav type="game" />
+  <div class="container">
+    <ion-radio-group (ionChange)="changeDifficulty($event.detail.value)" [value]="difficulty">
+      <div class="radio-group">
+        <ion-radio [value]="1" labelPlacement="end" color="success">
+          Facil
+        </ion-radio>
+        <ion-radio [value]="2" labelPlacement="end" color="warning">
+          Normal
+        </ion-radio>
+        <ion-radio [value]="3" labelPlacement="end" color="danger">
+          Dificil
+        </ion-radio>
+      </div>
+    </ion-radio-group>
+  </div>
+</ion-content>

@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@angular/core';
 import { IonCard } from '@ionic/angular/standalone';
 import { PlayerService } from 'src/app/services/player.service';
+import { SettingsService } from 'src/app/services/settings.service';
 
 @Component({
   selector: 'app-crystal',
@@ -22,10 +23,22 @@ export class CrystalComponent implements OnInit {
   }>();
 
   money: number = 0;
+  difficulty: 1 | 2 | 3 = 2;
+  crystalsWH: string = "100px";
 
-  constructor(private playerService: PlayerService) {
+  constructor(private playerService: PlayerService, private settings: SettingsService) {
     this.playerService.player$.subscribe(pj => {
       this.money = pj?.money ?? 0;
+    });
+
+    this.settings.difficulty$.subscribe(level => {
+      if (level === 1) {
+        this.crystalsWH = "100px"
+      } else if (level === 3) {
+        this.crystalsWH = "60px"
+      } else {
+        this.crystalsWH = "80px"
+      }
     })
   }
 
