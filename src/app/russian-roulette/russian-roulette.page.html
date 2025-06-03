@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Ruleta Rusa</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding ion-text-center">
+  <div class="contenedor1">
+    <app-nav type="game" />
+    <h2>{{ message }}</h2>
+    
+    <ion-button expand="block" color="danger" (click)="pullTrigger()" [disabled]="disabled">
+      Disparar 🔫
+    </ion-button>
+    
+    <ion-button expand="block" color="medium" (click)="reloadGun()">
+      Recargar Revolver
+    </ion-button>
+  </div>
+</ion-content>

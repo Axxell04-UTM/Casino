@@ -149,7 +149,7 @@ export class GuessTheWayPage implements OnInit {
 
   onCrushedCrystal(event: { rowId: number; index: number; gameover: boolean }) {
     if (this.resultMessage) { return };
-    if (!this.money) {
+    if (this.money < this.lostValue) {
       this.resultMessage = "Necesita más dinero para seguir jugando";
       this.colorMessage = "rgb(247, 97, 97)";
       return;

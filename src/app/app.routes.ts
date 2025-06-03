@@ -50,4 +50,10 @@ export const routes: Routes = [
     loadComponent: () => import('./settings/settings.page').then( m => m.SettingsPage),
     canActivate: [AuthGuard]
   },
+  {
+    path: 'russian-roulette',
+    loadComponent: () => import('./russian-roulette/russian-roulette.page').then( m => m.RussianRoulettePage),
+    canActivate: [AuthGuard]
+  },
+
 ];

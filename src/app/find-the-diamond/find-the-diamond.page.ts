@@ -100,7 +100,7 @@ export class FindTheDiamondPage implements OnInit {
 
   onPressCard(event: number) {
     if (this.resultMessage) { return };
-    if (!this.money) {
+    if (this.money < this.lostValue) {
       this.resultMessage = "Necesita más dinero para seguir jugando";
       this.colorMessage = "rgb(247, 97, 97)";
       return;
