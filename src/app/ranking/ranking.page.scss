@@ -1,0 +1,51 @@
+ion-title {
+    text-align: center;
+}
+
+ion-card {
+    margin: 0;
+}
+
+.user-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: start;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.user-card {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    padding: 10px;
+    font-size: 18px;
+    .user-position {
+        color: darksalmon;
+    }
+    .user-money-value, .user-name-value {
+        color: aliceblue;
+    }
+    .user-name {
+        display: flex;
+        flex-direction: row;
+        gap: 5px;
+        align-items: center;
+    }
+    .user-money {
+        display: flex;
+        flex-direction: row;
+        gap: 5px;
+        align-items: center;
+    }
+    .icon-name {
+        color: aquamarine;
+        font-size: 20px;
+    }
+    .icon-cash {
+        color: greenyellow;
+        font-size: 20px;
+    }
+}

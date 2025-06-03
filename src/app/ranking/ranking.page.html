@@ -1,0 +1,28 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>TOP</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <app-nav type="game" />
+  <div class="user-container">
+    <ion-card class="user-card" *ngFor="let user of ranking; index as i">
+      <span class="user-position">
+        {{ i+1 }}
+      </span>
+      <div class="user-name">
+        <ion-icon name="person-circle" class="icon-name" />
+        <span class="user-name-value">
+          {{ user.name }}
+        </span>
+      </div>
+      <div class="user-money">
+        <ion-icon name="cash" class="icon-cash" />
+        <span class="user-money-value">
+          {{ user.money }}
+        </span>
+      </div>
+    </ion-card>
+  </div>
+</ion-content>

@@ -64,7 +64,7 @@ export class FindTheDiamondPage implements OnInit {
   numCards = 10;
 
   winningIndex: number | undefined;
-  earningValue = 100;
+  earningValue = 500;
   lostValue = 10;
 
   resultMessage = "";
